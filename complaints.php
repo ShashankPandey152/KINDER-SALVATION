@@ -11,7 +11,16 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
-      
+     <!--Jquery Date Picker--> 
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     <script>
+           $( function() {
+             $( "#datepicker" ).datepicker();
+           } );
+     </script>
+
     <style>
     
         .dropdown:hover .dropdown-menu {
@@ -79,6 +88,7 @@
     </div>
     <div style="padding-left: 10%">
       <input type="text" placeholder="Name" style="width: 350px;"><br><br>
+      <p>Date: <input type="text" id="datepicker"></p><br>
       <textarea placeholder="Details" style="width: 350px;height: 150px;"></textarea><br><br>
       <input type="file">
     </div>
