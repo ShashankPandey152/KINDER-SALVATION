@@ -30,7 +30,7 @@
           background-color: #d1e0e0;
 
         }
-
+     .red-tooltip + .tooltip.top > .tooltip-arrow {background-color: red;}
     </style>
 
     <title>CHAT</title>
@@ -74,31 +74,20 @@
     </nav>
       <h1 style="text-align:center;color:red;margin-top:20px;">CHAT</h1>
       <h3 style="text-align:center;color:red;margin-top:20px;">Which type of chat you want?</h3>
-      <div class="form-check form-check-inline" style="float:left; margin:30px 0px 0px 500px;">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-  <label class="form-check-label" for="inlineRadio1" style="font-size:30px;">PUBLIC</label>
+      <div style="text-align:center; margin-top:50px;">
+          <div class="bd-example tooltip-demo">
+  <div class="bd-example-tooltips">
+      <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" class="red-tooltip" title="You can chat with person who are added in your group.">
+      PUBLIC
+</button>&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="You can chat with person personally.">
+  PRIVATE
+</button>
 </div>
-<div class="form-check form-check-inline" style="margin:30px 0px 0px 50px;">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-  <label class="form-check-label" for="inlineRadio1" style="font-size:30px;">PRIVATE</label>
 </div>
-      <!--<div style="margin:50px 0px 0px 100px;">
-      <h4> Public : You can chat with person who are added in your group.</h4>
-      <h4>Private : You cam chat with person personally.</h4>
-      </div>   -->   
-      <div style="text-align:center;;margin:50px 0px 0px 0px;">
-      <table style="width:100%;">
-          <tr>
-              <th>PUBLIC</th>
-              <th>PRIVATE</th>
-          </tr>
-          <tr>
-              <th>You can chat with person who are added in your group.      </th>
-              <th>You cam chat with person personally.      </th>
-          </tr>
-      </table>
-          </div>
+</div>
     <!-- Optional JavaScript -->
+      
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -1,3 +1,51 @@
+<?php
+
+    session_start();
+
+    $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
+
+    if(isset($_POST['submit'])) {
+        if($_FILES['image']['name'] != "" && $_POST['name'] != "" && $_POST['age'] != "" && $_POST['gender'] != "" && $_POST['address'] != "") {
+            $errors= "";
+            $file_name = $_FILES['image']['name'];
+            $file_size =$_FILES['image']['size'];
+            $file_tmp =$_FILES['image']['tmp_name'];
+            $file_type=$_FILES['image']['type'];
+            $tmp = explode('.', $file_name);
+            $file_ext = strtolower($tmp[1]);
+            
+            $expensions= array("jpeg","jpg","png");
+            
+            if(in_array($file_ext,$expensions)=== false){
+                $errors .= "Extension not allowed, please choose a JPEG or PNG file.\\n";
+            }
+            
+            if($file_size > 2000000){
+                $errors .= 'File size must not be greater than 2 MB.\\n';
+            }
+            
+            if($_POST['age'] < 0 || $_POST['age'] > 18) {
+                $errors .= "Age is not valid. Valid age less than 18.\\n";
+            }
+            
+            if(empty($errors)==true){
+                $query = "INSERT INTO `users`(`enlistor`, `name`, `age`, `address`, `picture`, `sex`) VALUES('".mysqli_real_escape_string($link, $_SESSION['email'])."', '".mysqli_real_escape_string($link, $_POST['name'])."', '".mysqli_real_escape_string($link, $_POST['age'])."', '".mysqli_real_escape_string($link, $_POST['address'])."', '".mysqli_real_escape_string($link, $file_name)."', '".mysqli_real_escape_string($link, $_POST['gender'])."')";
+                if(mysqli_query($link, $query)) {
+                    move_uploaded_file($file_tmp,"images/enlist/".$file_name);
+                    echo "<script> alert('Data added successfully!'); </script>";
+                } else {
+                    echo "<script> alert('Oops! There was an error, please come back later.'); </script>";
+                }
+            }else{
+                echo "<script> alert($errors); </script>";
+            } 
+        } else {
+            echo "<script> alert('Complete the form!'); </script>";
+        }
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,15 +73,32 @@
         .nav-link {
             font-weight: bold;
         }
-      
         .navbar-custom {
           background-color: #d1e0e0;
 
         }
+        .inputBox {
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
 
     </style>
 
-    <title>STARTER TEMPLATE</title>
+    <title>ENLIST</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -76,16 +141,25 @@
     <div>
       <h1 style="text-align: center;">ENLIST CHILDREN</h1>
     </div>
-    <div style="padding-top: 5%;padding-left: 10%;">
-      <label>Upload Picture </label><br>
-      <input type="file"><br><br>
-      <input type="text" placeholder="Name" style="width: 250px;"><br><br>
-      <input type="text" placeholder="Name" style="width: 250px;"><br><br>
-      <textarea placeholder="Address" style="width: 250px;height: 100px;"></textarea>
-    </div><br><br>  
-    <div style="text-align: center;">
-      <button>Submit</button>
-    </div>
+    <form method="post" enctype="multipart/form-data">
+        <div style="padding-top: 5%;padding-left: 10%;">
+          <label>Upload Picture </label><br>
+          <input type="file" name="image"><br><br>
+          <input type="text" placeholder="Name" style="width: 250px;" class="inputBox" name="name"><br><br>
+          <input type="text" placeholder="Age" style="width: 250px;" class="inputBox" name="age"><br><br>
+          <select class="inputBox" name="gender">
+            <option>--Select gender--</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Others</option>
+          </select><br><br>
+          <textarea placeholder="Address" style="width: 250px;height: 100px;" class="inputBox" name="address"></textarea>
+      
+        </div><br><br>  
+        <div style="text-align: center;">
+          <button id="submit" name="submit">Submit</button>
+        </div>
+    </form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

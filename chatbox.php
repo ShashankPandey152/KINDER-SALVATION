@@ -116,9 +116,11 @@
 <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" >
  <button type="submit" class="btn btn-primary btn-sm">Search</button>
 </div>
-	
-                <input type="text" placeholder='&nbsp;&#xF002;&nbsp;SEARCH' style="font-family: FontAwesome;width: 199px; position: absolute; bottom: 0;text-align:left;">
-    
+	   <div style="position: absolute;bottom:0;right:0px;">
+        <input type="text" placeholder='&nbsp;&nbsp;Type message here!' style="font-family: FontAwesome;width: 300px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary btn-sm"  >Send </button>
+    </div> 
            
 
     <!-- Optional JavaScript -->

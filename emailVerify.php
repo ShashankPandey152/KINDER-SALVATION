@@ -1,3 +1,30 @@
+<?php
+
+ session_start();
+
+$_SESSION['email'] = "sdharchou@gmail.com";
+    
+ $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
+
+ $to = $_SESSION['email'];
+                    $subject = "Email Verification";
+                    $message = '
+Thanks for signing up!
+
+Please click this link to activate your account:
+http://jncpasighat-com.stackstaging.com/vastuKosh/verify.php?email='.$_SESSION['email'].'
+
+This is a system generated mail. Do not reply. 
+                    ';
+                    $headers = 'From:no-reply@kindersalvation.com' . "\r\n"; 
+                    if(mail($to, $subject, $message, $headers)) {
+                        echo "<script> alert('Verification mail sent! Please verify your email address.'); </script>";
+                    }
+
+?>
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,7 +57,22 @@
           background-color: #d1e0e0;
 
         }
-
+        #email {
+            
+        }
+         #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
     </style>
 
     <title>STARTER TEMPLATE</title>
@@ -50,7 +92,7 @@
             <span id="text">Please verify e-mail address!<br><br>If you accidently deleted the mail, Click on Resend.</span>
             <br><br><br>
             <form method="post">
-                <button id="resend" name="resend">RESEND</button>
+               <p><input type="submit"  value="RESEND" id="submit" name="signup"></p>
             </form>
     </div>
 

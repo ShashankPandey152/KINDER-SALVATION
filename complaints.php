@@ -12,13 +12,16 @@
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
      <!--Jquery Date Picker--> 
-     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css" type="text/css">
+     <script src="jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+      
+    <!--jQuery-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    
      <script>
-           $( function() {
+           $(document).ready(function() {
              $( "#datepicker" ).datepicker();
-           } );
+           });
      </script>
 
     <style>

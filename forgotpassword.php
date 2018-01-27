@@ -1,3 +1,26 @@
+<?php
+
+     $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
+      
+      if(isset($_POST['submit'])){
+      if($_POST['new'] == "" || $_POST['old'] == "")  {
+          echo "<script> alert('Please enter Password') </script>";
+      } else {
+          if($_POST['new'] != $_POST['old']) {
+               echo "<script> alert('Please enter same password') </script>";
+          } else {
+              $query = "UPDATE `users` SET password = '".mysqli_real_escape_string($link, $_POST['new'])."' WHERE email = '".mysqli_real_escape_string($link, $_GET['email'])."'";              
+              mysqli_connect($link,$query);
+              echo "<script> alert('Password is set!') </script>";
+              
+          }
+      }
+    }
+?>
+
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,7 +32,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       
     <!--Google Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
+    <l
+       ink href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
       
     <style>
@@ -45,13 +69,15 @@
     <div>
       <h1 style="text-align: center;">FORGOT PASSWORD</h1>
     </div>  
+      <form method="post">
     <div style="text-align: center;padding-top: 8%;">
-      <input type="text" placeholder="New Paswword" style="width: 250px;"><br><br><br>
-      <input type="text" placeholder="Confirm Paswword" style="width: 250px;">
+      <input type="password" name="new" placeholder="New Password" style="width: 250px;"><br><br><br>
+      <input type="password" name="old" placeholder="Confirm Password" style="width: 250px;">
     </div>
     <div style="text-align: center;padding-top: 4%;">
-      <button>Submit</button>
+      <button name="submit">Submit</button>
     </div>
+          </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
