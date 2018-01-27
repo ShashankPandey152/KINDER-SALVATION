@@ -9,7 +9,7 @@
           if($_POST['new'] != $_POST['old']) {
                echo "<script> alert('Please enter same password') </script>";
           } else {
-              $query = "UPDATE `users` SET password = '".mysqli_real_escape_string($link, $_POST['new'])."' WHERE email = '".mysqli_real_escape_string($link, $_GET['email'])."'";              
+              $query = "UPDATE `users` SET password = '".mysqli_real_escape_string($link, hash('sha512',$_POST['new']))."' WHERE email = '".mysqli_real_escape_string($link, $_GET['email'])."'";              
               mysqli_connect($link,$query);
               echo "<script> alert('Password is set!') </script>";
               
@@ -54,10 +54,27 @@
           background-color: #d1e0e0;
 
         }
-
+         .inputBox {
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+                #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
     </style>
 
-    <title>STARTER TEMPLATE</title>
+    <title>forgetpassword</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -71,11 +88,11 @@
     </div>  
       <form method="post">
     <div style="text-align: center;padding-top: 8%;">
-      <input type="password" name="new" placeholder="New Password" style="width: 250px;"><br><br><br>
-      <input type="password" name="old" placeholder="Confirm Password" style="width: 250px;">
+       <p><input type="password" placeholder="New Password" class="inputBox" name="new"></p>
+         <p><input type="password" placeholder="Confirm Password" class="inputBox" name="old"></p>
     </div>
-    <div style="text-align: center;padding-top: 4%;">
-      <button name="submit">Submit</button>
+    <div style="text-align: center;">
+     <p><input type="submit" value="Submit" id="submit" name="submit"></p>
     </div>
           </form>
     <!-- Optional JavaScript -->

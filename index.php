@@ -231,7 +231,7 @@ This is a system generated mail. Do not reply.
     </div>
       
     <script type="text/javascript">
-    
+                  
         $("#user").click(function() {
            $("#userRadio").prop("checked","true");
         });

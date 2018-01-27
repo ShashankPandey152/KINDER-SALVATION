@@ -4,7 +4,10 @@
 
     $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
 
+    $_SESSION['email'] = "sdharchou@gmail.com";
+
     if(isset($_POST['submit'])) {
+        $errors = "";
         if($_FILES['image']['name'] != "" && $_POST['name'] != "" && $_POST['age'] != "" && $_POST['gender'] != "" && $_POST['address'] != "") {
             $errors= "";
             $file_name = $_FILES['image']['name'];
@@ -16,7 +19,7 @@
             
             $expensions= array("jpeg","jpg","png");
             
-            if(in_array($file_ext,$expensions)=== false){
+            if(in_array($file_ext,$expensions) == false){
                 $errors .= "Extension not allowed, please choose a JPEG or PNG file.\\n";
             }
             
@@ -28,8 +31,8 @@
                 $errors .= "Age is not valid. Valid age less than 18.\\n";
             }
             
-            if(empty($errors)==true){
-                $query = "INSERT INTO `users`(`enlistor`, `name`, `age`, `address`, `picture`, `sex`) VALUES('".mysqli_real_escape_string($link, $_SESSION['email'])."', '".mysqli_real_escape_string($link, $_POST['name'])."', '".mysqli_real_escape_string($link, $_POST['age'])."', '".mysqli_real_escape_string($link, $_POST['address'])."', '".mysqli_real_escape_string($link, $file_name)."', '".mysqli_real_escape_string($link, $_POST['gender'])."')";
+            if($errors == ""){
+                $query = "INSERT INTO `enlist`(`enlistor`, `name`, `age`, `address`, `picture`, `sex`) VALUES('".mysqli_real_escape_string($link, $_SESSION['email'])."', '".mysqli_real_escape_string($link, $_POST['name'])."', '".mysqli_real_escape_string($link, $_POST['age'])."', '".mysqli_real_escape_string($link, $_POST['address'])."', '".mysqli_real_escape_string($link, $file_name)."', '".mysqli_real_escape_string($link, $_POST['gender'])."')";
                 if(mysqli_query($link, $query)) {
                     move_uploaded_file($file_tmp,"images/enlist/".$file_name);
                     echo "<script> alert('Data added successfully!'); </script>";
@@ -37,7 +40,7 @@
                     echo "<script> alert('Oops! There was an error, please come back later.'); </script>";
                 }
             }else{
-                echo "<script> alert($errors); </script>";
+                echo "<script> alert('$errors'); </script>";
             } 
         } else {
             echo "<script> alert('Complete the form!'); </script>";
@@ -146,7 +149,7 @@
           <label>Upload Picture </label><br>
           <input type="file" name="image"><br><br>
           <input type="text" placeholder="Name" style="width: 250px;" class="inputBox" name="name"><br><br>
-          <input type="text" placeholder="Age" style="width: 250px;" class="inputBox" name="age"><br><br>
+          <input type="number" placeholder="Age" style="width: 250px;" class="inputBox" name="age"><br><br>
           <select class="inputBox" name="gender">
             <option>--Select gender--</option>
             <option value="M">Male</option>

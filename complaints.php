@@ -1,3 +1,55 @@
+<?php
+
+    session_start();
+    
+    $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
+
+    if(isset($_POST['submit'])) {
+        $errors = "";
+        if($_POST['name'] != "" && $_POST['date'] != "" && $_POST['time'] != "" && $_POST['details'] != "") {
+            if(isset($_FILES['file']['name'])) {
+                $file_name = $_FILES['file']['name'];
+                $file_size =$_FILES['file']['size'];
+                $file_tmp =$_FILES['file']['tmp_name'];
+                $file_type=$_FILES['file']['type'];
+                $tmp = explode('.', $file_name);
+                $file_ext = strtolower($tmp[1]);
+
+                $expensions= array("jpeg","jpg","png","mp4","mkv","flv");
+
+                if(in_array($file_ext,$expensions) == false){
+                    $errors .= "Extension not allowed, please choose a JPEG, PNG, MP4, MKV, FLV file.\\n";
+                }
+
+                if($file_size > 20000000){
+                    $errors .= 'File size must not be greater than 20 MB.\\n';
+                }
+                if($errors != "") {
+                    echo "<script> alert('$errors'); </script>";
+                } else {
+                    $query = "INSERT INTO `complaints`(`name`, `date`, `time`, `details`, `graphic`) VALUES('".mysqli_real_escape_string($link, $_POST['name'])."', '".mysqli_real_escape_string($link, $_POST['date'])."', '".mysqli_real_escape_string($link, $_POST['time'])."', '".mysqli_real_escape_string($link, $_POST['details'])."', '".mysqli_real_escape_string($link, $_FILES['file']['name'])."')";
+                    if(mysqli_query($link, $query)) {
+                        move_uploaded_file($file_tmp,"images/complaints/".$file_name);
+                        echo "<script> alert('Data updated successfully!'); </script>";
+                    } else {
+                        echo "<script> alert('Oops! There was an error, please come back soon.'); </script>";
+                    }
+                }
+            } else {
+                $query = "INSERT INTO `complaints`(`name`, `date`, `time`, `details`) VALUES('".mysqli_real_escape_string($link, $_POST['name'])."', '".mysqli_real_escape_string($link, $_POST['date'])."', '".mysqli_real_escape_string($link, $_POST['time'])."', '".mysqli_real_escape_string($link, $_POST['details'])."')";
+                if(mysqli_query($link, $query)) {
+                    echo "<script> alert('Data updated successfully!'); </script>";
+                } else {
+                    echo "<script> alert('Oops! There was an error, please come back soon.'); </script>";
+                }
+            }
+        } else {
+            echo "<script> alert('Complete the form!'); </script>";
+        }
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,18 +63,8 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
-     <!--Jquery Date Picker--> 
-     <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css" type="text/css">
-     <script src="jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-      
     <!--jQuery-->
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    
-     <script>
-           $(document).ready(function() {
-             $( "#datepicker" ).datepicker();
-           });
-     </script>
 
     <style>
     
@@ -37,15 +79,31 @@
         .nav-link {
             font-weight: bold;
         }
-      
         .navbar-custom {
           background-color: #d1e0e0;
 
         }
+        .inputBox {
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
 
     </style>
 
-    <title>STARTER TEMPLATE</title>
+    <title>COMPLAINTS</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -89,12 +147,18 @@
     <div>
       <h1 style="text-align: center;">COMPLAINTS</h1>
     </div>
-    <div style="padding-left: 10%">
-      <input type="text" placeholder="Name" style="width: 350px;"><br><br>
-      <p>Date: <input type="text" id="datepicker"></p><br>
-      <textarea placeholder="Details" style="width: 350px;height: 150px;"></textarea><br><br>
-      <input type="file">
-    </div>
+    <form method="post" enctype="multipart/form-data">
+        <div style="padding-left: 10%">
+          <input type="text" placeholder="Name" class="inputBox" name="name" style="width: 350px;"><br><br>
+          <label for="date">Date:&nbsp;&nbsp;</label><input type="date" name="date" id="date" class="inputBox" placeholder="Date" class="datepicker"><br><br>
+          <label for="time">Time:&nbsp;&nbsp;</label><input type="time" name="time" id="time" class="inputBox" placeholder="Date" class="datepicker"><br><br>
+          <textarea placeholder="Details" style="width: 350px;height: 150px;" name="details" class="inputBox"></textarea><br><br>
+          <label for="file">Upload image/video:&nbsp;&nbsp;</label><input type="file" name="file" id="file"><br><br>
+        </div>
+        <div style="text-align: center;">  
+          <input type="submit" value="Submit" name="submit" id="submit">
+        </div>
+    </form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

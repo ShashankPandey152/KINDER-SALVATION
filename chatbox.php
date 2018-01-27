@@ -11,6 +11,8 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
+    <!--jQuery-->
+    <script src="js/jquery.min.js" type="text/javascript"></script>
       
     <style>
     
@@ -32,43 +34,47 @@
         }
      
 
-.search {
-    padding: 5px 0;
-    width: 250px;
-    height: 30px;
-    position: relative;
-    margin-left: 10px;
-    float: left;
-    line-height: 22px;
-}
+        .search {
+            padding: 5px 0;
+            width: 20%;
+            height: 30px;
+            position: relative;
+            margin-left: 10px;
+            float: left;
+            line-height: 22px;
+            float:left; 
+            height: 89vh; 
+            background: #F8F8F8; 
+            margin-left: 0;
+        }
 
-    .search input {
-        position: absolute;
-        width: 0px;
-        float: Left;
-        margin-left: 210px;
-        -webkit-transition: all 0.7s ease-in-out;
-        -moz-transition: all 0.7s ease-in-out;
-        -o-transition: all 0.7s ease-in-out;
-        transition: all 0.7s ease-in-out;
-        height: 30px;
-        line-height: 18px;
-        padding: 0 2px 0 2px;
-        border-radius:1px;
-    }
+        .search input {
+            position: absolute;
+            width: 0px;
+            float: Left;
+            margin-left: 210px;
+            -webkit-transition: all 0.7s ease-in-out;
+            -moz-transition: all 0.7s ease-in-out;
+            -o-transition: all 0.7s ease-in-out;
+            transition: all 0.7s ease-in-out;
+            height: 30px;
+            line-height: 18px;
+            padding: 0 2px 0 2px;
+            border-radius:1px;
+        }
 
         .search:hover input, .search input:focus {
             width: 200px;
             margin-left: 0px;
         }
 
-.btn {
-    height: 30px;
-    position: absolute;
-    right: 0;
-    top: 5px;
-    border-radius:1px;
-}
+        .btn {
+            height: 30px;
+            position: absolute;
+            right: 0;
+            top: 5px;
+            border-radius:1px;
+        }
 
     </style>
 
@@ -112,15 +118,25 @@
       </div>
     </nav>
      
-	<div class="row container search" style="float:left;">
-<input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" >
- <button type="submit" class="btn btn-primary btn-sm">Search</button>
-</div>
-	   <div style="position: absolute;bottom:0;right:0px;">
-        <input type="text" placeholder='&nbsp;&nbsp;Type message here!' style="font-family: FontAwesome;width: 300px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary btn-sm"  >Send </button>
-    </div> 
+	<div class="row container search">
+    <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" >
+     <button type="submit" class="btn btn-primary btn-sm">Search</button>
+    </div>
+    <div id="message">
+        <div id="name">
+          <p style="width: 80%; margin-left: 20%; background: #E0E0E0; height: 50px; padding: 10px 20px;">Name</p>  
+        </div>
+       <div style="position:absolute; bottom:1%;">
+        <input type="text" placeholder='Type message here!' style="font-family: FontAwesome;width: 400%; padding: 5px 10px; margin-left: 135%;">
+        <button type="submit" class="btn btn-primary btn-sm" style="margin-right: -430%">Send</button>
+        </div> 
+    </div>
+      
+    <script type="text/javascript">
+    
+        $("#message").hide();
+        
+    </script>
            
 
     <!-- Optional JavaScript -->
