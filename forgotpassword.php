@@ -45,11 +45,13 @@
     <div>
       <h1 style="text-align: center;">FORGOT PASSWORD</h1>
     </div>  
-    <div style="text-align: center;padding-top: 10%;">
+    <div style="text-align: center;padding-top: 8%;">
       <input type="text" placeholder="New Paswword" style="width: 250px;"><br><br><br>
       <input type="text" placeholder="Confirm Paswword" style="width: 250px;">
     </div>
-
+    <div style="text-align: center;padding-top: 4%;">
+      <button>Submit</button>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
