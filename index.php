@@ -117,7 +117,7 @@ This is a system generated mail. Do not reply.
                     $message = '
 
 Please click this link to change your password:
-http://jncpasighat-com.stackstaging.com/vastuKosh/verify.php?email='.$_POST['forgotEmail'].'
+http://kindersalvation-com.stackstaging.com/forgotpassword.php?email='.$_POST['forgotEmail'].'
 
 This is a system generated mail. Do not reply. 
                     ';
