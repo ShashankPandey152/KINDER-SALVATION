@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-=======
-<?php
-
-    session_start();
-
-    $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
-
-    $query = "SELECT * FROM `upload` ORDER BY `id` DESC";
-
-    if(isset($_POST['logout'])) {
-        $_SESSION['id'] = "";
-        $_SESSION['email'] = "";
-        echo "<script> location.href='/'; </script>";
-    }
-
-?>
-
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
 <!doctype html>
 <html lang="en">
   <head>
@@ -49,37 +30,14 @@
           background-color: #d1e0e0;
 
         }
-        .bg{
-          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
-          background-size: cover;
-        }
-<<<<<<< HEAD
-=======
-        #submit {
-            background: none;
-            border: 2px solid #5BE59E;
-            padding: 5px 10px;
-            color: #5BE59E;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
-        #submit:hover {
-            background: #5BE59E;
-            color: white;
-        }
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
+
     </style>
 
-    <title>ARTICLES</title>
+    <title>PUBLIC CHAT</title>
   </head>
-  <body class="bg">
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-<<<<<<< HEAD
       <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
-=======
-      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -91,7 +49,6 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
               <a class="dropdown-item" href="#">ARTICLES</a>
               <a class="dropdown-item" href="#">UPLOAD</a>
             </div>
@@ -101,60 +58,21 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">REPORT</a>
-=======
-              <a class="dropdown-item" href="articles">ARTICLES</a>
-              <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
-              <a class="dropdown-item" href="upload">UPLOAD</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="forum">FORUM</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="complaints">REPORT</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
               <a class="dropdown-item" href="#">ADOPT</a>
               <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ENLIST</a>
-=======
-              <a class="dropdown-item" href="adopt">ADOPT</a>
-              <a class="dropdown-item" href="donate">DONATE</a>
-              <a class="dropdown-item" href="enlist">ENLIST</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
+              <a class="dropdown-item" href="#">ANALYZE</a>
             </div>
           </li>
         </ul>
       </div>
-<<<<<<< HEAD
     </nav>
-      <h1 style="text-align:center;margin-top:20px;color: white;">ARTICLES</h1>
-=======
-        <form method="post">
-            <button id="submit" name="logout">LOGOUT</button>
-        </form>
-    </nav>
-      <h1 style="text-align:center;margin-top:20px;color: white;">ARTICLES</h1><br>
-      <div id="articles">
-        <?php
-          
-            if($result = mysqli_query($link, $query)) {
-                while($row = mysqli_fetch_array($result)) {
-                    $id = $row['id'];
-                    $title = $row['title'];
-                    echo "<p style='text-align: center;'><a href='article?id=$id'>$title</a></p>";
-                }
-            }
-          
-        ?>
-      </div>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
+       <h1 style="text-align:center;color:red;margin-top:20px;">PUBLIC CHAT</h1>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

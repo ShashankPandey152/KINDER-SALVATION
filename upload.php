@@ -5,11 +5,16 @@
     $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
     
     if(isset($_POST['submit'])) {
+<<<<<<< HEAD
         if($_POST['field'] != "") {
+=======
+        if($_POST['field'] != "" && $_POST['title'] != "") {
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
             if($_FILES['file']['name'] != "" && $_FILES['file1']['name'] != "") {
                 echo "<script> alert('Select either media or text file!'); </script>";
             } else if($_FILES['file']['name'] != "") {
                 $errors= "";
+<<<<<<< HEAD
                 $file_name = $_FILES['image']['name'];
                 $file_size =$_FILES['image']['size'];
                 $file_tmp =$_FILES['image']['tmp_name'];
@@ -21,6 +26,47 @@
 
                 if(in_array($file_ext,$expensions) == false){
                     $errors .= "Extension not allowed, please choose a JPEG or PNG file.\\n";
+=======
+                $file_name = $_FILES['file']['name'];
+                $file_size =$_FILES['file']['size'];
+                $file_tmp =$_FILES['file']['tmp_name'];
+                $file_type=$_FILES['file']['type'];
+                $tmp = explode('.', $file_name);
+                $file_ext = strtolower($tmp[1]);
+
+                $expensions= array("jpeg","jpg","png","mp4","flv","mkv");
+
+                if(in_array($file_ext,$expensions) == false){
+                    $errors .= "Extension not allowed, please choose a JPEG, PNG, MP4, FLV, MKV file.\\n";
+                }
+
+                if($file_size > 20000000){
+                    $errors .= 'File size must not be greater than 20 MB.\\n';
+                } 
+                
+                if($errors == "") {
+                    $query = "INSERT INTO `upload`(`field`, `img`, `title`) VALUES('".mysqli_real_escape_string($link, $_POST['field'])."', '".mysqli_real_escape_string($link, $file_name)."', '".mysqli_real_escape_string($link, $_POST['title'])."')";
+                    if(mysqli_query($link, $query)) {
+                        move_uploaded_file($file_tmp,"images/media/".$file_name);
+                        echo "<script> alert('Data added successfully!'); </script>";
+                    } else {
+                        echo "<script> alert('Oops! There was an error, please come back later.'); </script>";
+                    }
+                }
+            } else if($_FILES['file1']['name'] != "") {
+                $errors= "";
+                $file_name = $_FILES['file1']['name'];
+                $file_size =$_FILES['file1']['size'];
+                $file_tmp =$_FILES['file1']['tmp_name'];
+                $file_type=$_FILES['file1']['type'];
+                $tmp = explode('.', $file_name);
+                $file_ext = strtolower($tmp[1]);
+
+                $expensions= array("txt");
+
+                if(in_array($file_ext,$expensions) == false){
+                    $errors .= "Extension not allowed, please choose a TXT file.\\n";
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
                 }
 
                 if($file_size > 2000000){
@@ -28,12 +74,32 @@
                 } 
                 
                 if($errors == "") {
+<<<<<<< HEAD
                     $query = ""
                 }
             }
         } 
     }
     
+=======
+                    $query = "INSERT INTO `upload`(`field`, `text`, `title`) VALUES('".mysqli_real_escape_string($link, $_POST['field'])."', '".mysqli_real_escape_string($link, $file_name)."', '".mysqli_real_escape_string($link, $_POST['title'])."')";
+                    if(mysqli_query($link, $query)) {
+                        move_uploaded_file($file_tmp,"images/text/".$file_name);
+                        echo "<script> alert('Data added successfully!'); </script>";
+                    } else {
+                        echo "<script> alert('Oops! There was an error, please come back later.'); </script>";
+                    }
+                }
+            } 
+        } 
+    }
+    
+    if(isset($_POST['logout'])) {
+        $_SESSION['id'] = "";
+        $_SESSION['email'] = "";
+        echo "<script> location.href='/'; </script>";
+    }
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
 
 ?>
 
@@ -99,6 +165,7 @@
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
+<<<<<<< HEAD
     </style>
 
     <title>STARTER TEMPLATE</title>
@@ -106,6 +173,33 @@
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+=======
+        .inputBox {
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
+    </style>
+
+    <title>UPLOAD ARTICLE</title>
+  </head>
+  <body class="bg">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -117,6 +211,7 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
               <a class="dropdown-item" href="#">ARTICLES</a>
               <a class="dropdown-item" href="#">UPLOAD</a>
             </div>
@@ -126,24 +221,52 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">REPORT</a>
+=======
+              <a class="dropdown-item" href="articles">ARTICLES</a>
+              <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
+              <a class="dropdown-item" href="upload">UPLOAD</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="forum">FORUM</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="complaints">REPORT</a>
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
               <a class="dropdown-item" href="#">ADOPT</a>
               <a class="dropdown-item" href="#">DONATE</a>
               <a class="dropdown-item" href="#">ENLIST</a>
+=======
+              <a class="dropdown-item" href="adopt">ADOPT</a>
+              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="enlist">ENLIST</a>
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
             </div>
           </li>
         </ul>
       </div>
+<<<<<<< HEAD
+=======
+        <form method="post">
+            <button id="submit" name="logout">LOGOUT</button>
+        </form>
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
     </nav>
       <h1 style="text-align:center;margin-top:20px;">UPLOAD ARTICLE</h1>
       
       <div class="upload">
           <form method="post" enctype="multipart/form-data">
+<<<<<<< HEAD
+=======
+    <p><input type="text" placeholder="Title" class="inputBox" name="title"></p>
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       <select class="option" name="field">
           <option value="1">--FIELD--</option>
           <option value="EXPERIMENTAL">EXPERIMENTAL</option>

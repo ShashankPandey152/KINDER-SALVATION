@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+=======
+<?php
+
+    session_start();
+
+    if(isset($_POST['logout'])) {
+        $_SESSION['id'] = "";
+        $_SESSION['email'] = "";
+        echo "<script> location.href='/'; </script>";
+    }
+
+?>
+
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,13 +49,33 @@
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
+<<<<<<< HEAD
+=======
+        #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
     </style>
 
     <title>Online Abuse</title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+<<<<<<< HEAD
       <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+=======
+      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -52,6 +87,7 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
               <a class="dropdown-item" href="#">ARTICLES</a>
               <a class="dropdown-item" href="#">UPLOAD</a>
             </div>
@@ -61,19 +97,43 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">REPORT</a>
+=======
+              <a class="dropdown-item" href="articles">ARTICLES</a>
+              <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
+              <a class="dropdown-item" href="upload">UPLOAD</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="forum">FORUM</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="complaints">REPORT</a>
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
               <a class="dropdown-item" href="#">ADOPT</a>
               <a class="dropdown-item" href="#">DONATE</a>
               <a class="dropdown-item" href="#">ANALYZE</a>
+=======
+              <a class="dropdown-item" href="adopt">ADOPT</a>
+              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="enlist">ENLIST</a>
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
             </div>
           </li>
         </ul>
       </div>
+<<<<<<< HEAD
+=======
+        <form method="post">
+            <button id="submit" name="logout">LOGOUT</button>
+        </form>
+>>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
     </nav>
       <div style=" text-align:center;background: white; opacity: 0.8;margin:50px 200px 50px 200px; auto; border-radius: 20px;">
       <h1 style="color:red"> Online abuse</h1>

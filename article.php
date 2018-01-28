@@ -1,8 +1,12 @@
-<<<<<<< HEAD
-=======
 <?php
 
     session_start();
+
+    $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
+
+    $query = "SELECT * FROM `upload` WHERE `id` = '".mysqli_real_escape_string($link, $_GET['id'])."'";
+
+    $row = mysqli_fetch_array(mysqli_query($link, $query));
 
     if(isset($_POST['logout'])) {
         $_SESSION['id'] = "";
@@ -12,7 +16,6 @@
 
 ?>
 
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,11 +29,6 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
-<<<<<<< HEAD
-=======
-    <!--jQuery-->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       
     <style>
     
@@ -54,42 +52,6 @@
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
-          #question {
-                margin-left: 100px;
-            }
-            
-            .inputSettings {
-                border: 2px solid #19D1FF;
-                border-radius: 10px;
-                padding: 5px 10px;
-                margin-bottom: 10px;
-            }
-            
-            .askQuestion {
-                padding: 5px 10px;
-                background: white;
-                color: #5BE59E;
-                border: 2px solid #19D1FF;
-                border-radius: 10px;
-                font-weight: bold;
-            }
-            
-            .askQuestion:hover {
-                background: #19D1FF;
-                color: white;
-            }
-            
-<<<<<<< HEAD
-
-
-    </style>
-
-    <title>STARTER TEMPLATE</title>
-  </head>
-  <body class="bg">
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
-=======
         #submit {
             background: none;
             border: 2px solid #5BE59E;
@@ -103,15 +65,13 @@
             background: #5BE59E;
             color: white;
         }
-
     </style>
 
-    <title>FORUM</title>
+    <title><?php echo $row['title']; ?></title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -123,17 +83,6 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-              <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">UPLOAD</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">CHAT</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">REPORT</a>
-=======
               <a class="dropdown-item" href="articles">ARTICLES</a>
               <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
               <a class="dropdown-item" href="upload">UPLOAD</a>
@@ -144,74 +93,52 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="complaints">REPORT</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-              <a class="dropdown-item" href="#">ADOPT</a>
-              <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ENLIST</a>
-=======
               <a class="dropdown-item" href="adopt">ADOPT</a>
               <a class="dropdown-item" href="donate">DONATE</a>
               <a class="dropdown-item" href="enlist">ENLIST</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
             </div>
           </li>
         </ul>
       </div>
-<<<<<<< HEAD
-    </nav>
-      
-      <div>
-          <h2 style="text-align: center;">FORUM</h2>
-          <div style="float: left; text-align: center;" id="question">
-
-        </select>
-              <input type="text" class="inputSettings" placeholder="Question" name="question" id="search">
-=======
         <form method="post">
             <button id="submit" name="logout">LOGOUT</button>
         </form>
     </nav>
-      <form method="post">
-          <h1 style="text-align:center;margin-top:20px;color: white;">FORUM</h1>
-          <div style="float: left; text-align: center;" id="question">
+      <h1 style="text-align:center;margin-top:20px;color: white;"><?php echo strtoupper($row['title']); ?></h1><br>
+      <div id="article" style="color: white; margin-left: 20px;">
+        <?php
+          if($row['text'] == "") {
+              $image = "images/media/".$row['img'];
+              echo "<img src='$image'>";
+          } else {
+                $file = "images/text/".$row['text'];
 
-              <input type="text" class="inputSettings" placeholder="Question" name="question" id="search">&nbsp;&nbsp;&nbsp;
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
-              <input name="submit" type="submit" class="askQuestion" value="Ask a new question">
-              <br><br>
-              
-              <div id="results" style="margin-left: -50px;">
-                
-              </div>
-          </div>
-<<<<<<< HEAD
-        </div>
-          </form>
-=======
-          </form>
-      
-      <script type="text/javascript">
-          document.getElementById("search").onkeypress = function() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if(this.readyState == 4 && this.status == 200) {
-                    document.getElementById("results").innerHTML = this.responseText; 
-                } 
-            };
-            xmlhttp.open("GET", "getForum?q=" + $("#search").val(), true);
-            xmlhttp.send();
+                $handle = fopen($file, "r");
 
-          };
-      </script>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
+                if ($handle) {
 
+                    while (!feof($handle)) {
+
+                        echo fgets($handle)."<br>";
+
+                    }
+
+                    fclose($handle);
+
+                } else {
+
+                    echo "Could not open file";
+
+                }
+          }
+        ?>
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

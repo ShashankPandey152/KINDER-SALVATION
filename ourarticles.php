@@ -1,25 +1,14 @@
 <?php
 
-     $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
-      
-      if(isset($_POST['submit'])){
-      if($_POST['new'] == "" || $_POST['old'] == "")  {
-          echo "<script> alert('Please enter Password') </script>";
-      } else {
-          if($_POST['new'] != $_POST['old']) {
-               echo "<script> alert('Please enter same password') </script>";
-          } else {
-              $query = "UPDATE `users` SET password = '".mysqli_real_escape_string($link, hash('sha512',$_POST['new']))."' WHERE email = '".mysqli_real_escape_string($link, $_GET['email'])."'";              
-              mysqli_connect($link,$query);
-              echo "<script> alert('Password is set!') </script>";
-              
-          }
-      }
+    session_start();
+
+    if(isset($_POST['logout'])) {
+        $_SESSION['id'] = "";
+        $_SESSION['email'] = "";
+        echo "<script> location.href='/'; </script>";
     }
+
 ?>
-
-
-
 
 <!doctype html>
 <html lang="en">
@@ -32,12 +21,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       
     <!--Google Fonts-->
-<<<<<<< HEAD
-    <l
-       ink href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
-=======
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       
       
     <style>
@@ -58,12 +42,11 @@
           background-color: #d1e0e0;
 
         }
-         .inputBox {
-            border: 2px solid #5BE59E;
-            padding: 5px 10px;
-            border-radius: 10px;
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
         }
-                #submit {
+        #submit {
             background: none;
             border: 2px solid #5BE59E;
             padding: 5px 10px;
@@ -76,32 +59,58 @@
             background: #5BE59E;
             color: white;
         }
-        .bg{
-          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
-          background-size: cover;
-        }
+
     </style>
 
-    <title>forgetpassword</title>
+    <title>STARTER TEMPLATE</title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-    </nav><br>
-    <div>
-      <h1 style="text-align: center;color: white;">FORGOT PASSWORD</h1>
-    </div>  
-      <form method="post">
-    <div style="text-align: center;padding-top: 8%;">
-       <p><input type="password" placeholder="New Password" class="inputBox" name="new"></p>
-         <p><input type="password" placeholder="Confirm Password" class="inputBox" name="old"></p>
-    </div>
-    <div style="text-align: center;">
-     <p><input type="submit" value="Submit" id="submit" name="submit"></p>
-    </div>
-          </form>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              THE ISSUE
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="articles">ARTICLES</a>
+              <a class="dropdown-item" href="ourarticles">ARTICLES</a>
+              <a class="dropdown-item" href="upload">UPLOAD</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="forum">FORUM</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="complaints">REPORT</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              GET INVOLVED
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="adopt">ADOPT</a>
+              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="enlist">ENLIST</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+        <form method="post">
+            <button id="submit" name="logout">LOGOUT</button>
+        </form>
+    </nav>
+        <div style="text-align:center;margin-top:50px;color:white;">
+      <a href="1-prevent">SEXUAL ABUSE</a><br><br>
+      <a href="cyber">CYBER BULLYING</a><br><br>
+      <a href="online abuse">ONLINE ABUSE</a><br><br>
+      <a href="Domestic Abuse">DOMESTIC ABUSE</a><br><br>
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
