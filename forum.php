@@ -1,3 +1,15 @@
+<?php
+
+    session_start();
+
+    if(isset($_POST['logout'])) {
+        $_SESSION['id'] = "";
+        $_SESSION['email'] = "";
+        echo "<script> location.href='/'; </script>";
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,6 +23,8 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
+    <!--jQuery-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
       
     <style>
     
@@ -59,11 +73,23 @@
                 color: white;
             }
             
-
+        #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
 
     </style>
 
-    <title>STARTER TEMPLATE</title>
+    <title>FORUM</title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -79,13 +105,13 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="articles">ARTICLES</a>
+              <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
               <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FORUM</a>
+            <a class="nav-link" href="forum">FORUM</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="complaints">REPORT</a>
@@ -102,9 +128,12 @@
           </li>
         </ul>
       </div>
+        <form method="post">
+            <button id="submit" name="logout">LOGOUT</button>
+        </form>
     </nav>
       <form method="post">
-          <h2 style="text-align: center;">FORUM</h2>
+          <h1 style="text-align:center;margin-top:20px;color: white;">FORUM</h1>
           <div style="float: left; text-align: center;" id="question">
 
               <input type="text" class="inputSettings" placeholder="Question" name="question" id="search">&nbsp;&nbsp;&nbsp;
@@ -116,6 +145,20 @@
               </div>
           </div>
           </form>
+      
+      <script type="text/javascript">
+          document.getElementById("search").onkeypress = function() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("results").innerHTML = this.responseText; 
+                } 
+            };
+            xmlhttp.open("GET", "getForum?q=" + $("#search").val(), true);
+            xmlhttp.send();
+
+          };
+      </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

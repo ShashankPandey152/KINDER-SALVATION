@@ -1,58 +1,18 @@
 <?php
 
     session_start();
-    
+
     $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
 
-    if(isset($_POST['submit'])) {
-        $errors = "";
-        if($_POST['name'] != "" && $_POST['date'] != "" && $_POST['time'] != "" && $_POST['details'] != "") {
-            if(isset($_FILES['file']['name'])) {
-                $file_name = $_FILES['file']['name'];
-                $file_size =$_FILES['file']['size'];
-                $file_tmp =$_FILES['file']['tmp_name'];
-                $file_type=$_FILES['file']['type'];
-                $tmp = explode('.', $file_name);
-                $file_ext = strtolower($tmp[1]);
+    $query = "SELECT * FROM `upload` WHERE `id` = '".mysqli_real_escape_string($link, $_GET['id'])."'";
 
-                $expensions= array("jpeg","jpg","png","mp4","mkv","flv");
-
-                if(in_array($file_ext,$expensions) == false){
-                    $errors .= "Extension not allowed, please choose a JPEG, PNG, MP4, MKV, FLV file.\\n";
-                }
-
-                if($file_size > 20000000){
-                    $errors .= 'File size must not be greater than 20 MB.\\n';
-                }
-                if($errors != "") {
-                    echo "<script> alert('$errors'); </script>";
-                } else {
-                    $query = "INSERT INTO `complaints`(`name`, `date`, `time`, `details`, `graphic`) VALUES('".mysqli_real_escape_string($link, $_POST['name'])."', '".mysqli_real_escape_string($link, $_POST['date'])."', '".mysqli_real_escape_string($link, $_POST['time'])."', '".mysqli_real_escape_string($link, $_POST['details'])."', '".mysqli_real_escape_string($link, $_FILES['file']['name'])."')";
-                    if(mysqli_query($link, $query)) {
-                        move_uploaded_file($file_tmp,"images/complaints/".$file_name);
-                        echo "<script> alert('Data updated successfully!'); </script>";
-                    } else {
-                        echo "<script> alert('Oops! There was an error, please come back soon.'); </script>";
-                    }
-                }
-            } else {
-                $query = "INSERT INTO `complaints`(`name`, `date`, `time`, `details`) VALUES('".mysqli_real_escape_string($link, $_POST['name'])."', '".mysqli_real_escape_string($link, $_POST['date'])."', '".mysqli_real_escape_string($link, $_POST['time'])."', '".mysqli_real_escape_string($link, $_POST['details'])."')";
-                if(mysqli_query($link, $query)) {
-                    echo "<script> alert('Data updated successfully!'); </script>";
-                } else {
-                    echo "<script> alert('Oops! There was an error, please come back soon.'); </script>";
-                }
-            }
-        } else {
-            echo "<script> alert('Complete the form!'); </script>";
-        }
-    }
+    $row = mysqli_fetch_array(mysqli_query($link, $query));
 
     if(isset($_POST['logout'])) {
         $_SESSION['id'] = "";
         $_SESSION['email'] = "";
         echo "<script> location.href='/'; </script>";
-    } 
+    }
 
 ?>
 
@@ -69,9 +29,7 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
-    <!--jQuery-->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-
+      
     <style>
     
         .dropdown:hover .dropdown-menu {
@@ -85,14 +43,14 @@
         .nav-link {
             font-weight: bold;
         }
+      
         .navbar-custom {
           background-color: #d1e0e0;
 
         }
-        .inputBox {
-            border: 2px solid #5BE59E;
-            padding: 5px 10px;
-            border-radius: 10px;
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
         }
         #submit {
             background: none;
@@ -100,19 +58,16 @@
             padding: 5px 10px;
             color: #5BE59E;
             font-weight: bold;
+            margin-bottom: 20px;
             border-radius: 10px;
         }
         #submit:hover {
             background: #5BE59E;
             color: white;
         }
-        .bg{
-          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
-          background-size: cover;
-        }
     </style>
 
-    <title>COMPLAINTS</title>
+    <title><?php echo $row['title']; ?></title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -137,7 +92,7 @@
             <a class="nav-link" href="forum">FORUM</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="report">REPORT</a>
+            <a class="nav-link" href="complaints">REPORT</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -155,24 +110,35 @@
             <button id="submit" name="logout">LOGOUT</button>
         </form>
     </nav>
-    
+      <h1 style="text-align:center;margin-top:20px;color: white;"><?php echo strtoupper($row['title']); ?></h1><br>
+      <div id="article" style="color: white; margin-left: 20px;">
+        <?php
+          if($row['text'] == "") {
+              $image = "images/media/".$row['img'];
+              echo "<img src='$image'>";
+          } else {
+                $file = "images/text/".$row['text'];
 
-    <div>
-      <h1 style="text-align: center;color: white;">COMPLAINTS</h1>
-    </div>
-    <form method="post" enctype="multipart/form-data">
-        <div style="padding-left: 10%;color: white;">
-          <input type="text" placeholder="Name" class="inputBox" name="name" style="width: 350px;"><br><br>
-          <label for="date"><strong>Date:</strong>&nbsp;&nbsp;</label><input type="date" name="date" id="date" class="inputBox" placeholder="Date" class="datepicker"><br><br>
-          <label for="time"><strong>Time:</strong>&nbsp;&nbsp;</label><input type="time" name="time" id="time" class="inputBox" placeholder="Date" class="datepicker"><br><br>
-          <textarea placeholder="Details" style="width: 350px;height: 150px;" name="details" class="inputBox"></textarea><br><br>
-          <label for="file"><strong>Upload image/video:</strong>&nbsp;&nbsp;</label><input type="file" name="file" id="file"><br><br>
-        </div>
-        <div style="text-align: center;">  
-          <input type="submit" value="Submit" name="submit" id="submit">
-        </div>
-    </form>
+                $handle = fopen($file, "r");
 
+                if ($handle) {
+
+                    while (!feof($handle)) {
+
+                        echo fgets($handle)."<br>";
+
+                    }
+
+                    fclose($handle);
+
+                } else {
+
+                    echo "Could not open file";
+
+                }
+          }
+        ?>
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

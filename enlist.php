@@ -47,6 +47,12 @@
         }
     }
 
+    if(isset($_POST['logout'])) {
+        $_SESSION['id'] = "";
+        $_SESSION['email'] = "";
+        echo "<script> location.href='/'; </script>";
+    }
+
 ?>
 
 <!doctype html>
@@ -143,6 +149,9 @@
           </li>
         </ul>
       </div>
+        <form method="post">
+            <button id="submit" name="logout">LOGOUT</button>
+        </form>
     </nav><br>
     
     <div>

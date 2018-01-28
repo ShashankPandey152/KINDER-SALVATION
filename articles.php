@@ -1,3 +1,19 @@
+<?php
+
+    session_start();
+
+    $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
+
+    $query = "SELECT * FROM `upload` ORDER BY `id` DESC";
+
+    if(isset($_POST['logout'])) {
+        $_SESSION['id'] = "";
+        $_SESSION['email'] = "";
+        echo "<script> location.href='/'; </script>";
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,6 +50,19 @@
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
+        #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
     </style>
 
     <title>ARTICLES</title>
@@ -52,13 +81,13 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="articles">ARTICLES</a>
+              <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
               <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FORUM</a>
+            <a class="nav-link" href="forum">FORUM</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="complaints">REPORT</a>
@@ -75,8 +104,24 @@
           </li>
         </ul>
       </div>
+        <form method="post">
+            <button id="submit" name="logout">LOGOUT</button>
+        </form>
     </nav>
-      <h1 style="text-align:center;margin-top:20px;color: white;">ARTICLES</h1>
+      <h1 style="text-align:center;margin-top:20px;color: white;">ARTICLES</h1><br>
+      <div id="articles">
+        <?php
+          
+            if($result = mysqli_query($link, $query)) {
+                while($row = mysqli_fetch_array($result)) {
+                    $id = $row['id'];
+                    $title = $row['title'];
+                    echo "<p style='text-align: center;'><a href='article?id=$id'>$title</a></p>";
+                }
+            }
+          
+        ?>
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

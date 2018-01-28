@@ -6,6 +6,12 @@
 
     $query = "SELECT * FROM `enlist` ORDER BY `id` DESC";
 
+    if(isset($_POST['logout'])) {
+        $_SESSION['id'] = "";
+        $_SESSION['email'] = "";
+        echo "<script> location.href='/'; </script>";
+    }
+
 ?>
 
 <!doctype html>
@@ -44,6 +50,19 @@
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
+        #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
     </style>
 
     <title>ADOPT</title>
@@ -62,13 +81,13 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="articles">ARTICLES</a>
+              <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
               <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FORUM</a>
+            <a class="nav-link" href="forum">FORUM</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="complaints">REPORT</a>
@@ -85,6 +104,9 @@
           </li>
         </ul>
       </div>
+        <form method="post">
+            <button id="submit" name="logout">LOGOUT</button>
+        </form>
     </nav>
       <h1 style="text-align:center;margin-top:20px;color: white;">ADOPT CHILD</h1>
       <div style="margin: 20px;">

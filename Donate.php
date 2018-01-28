@@ -1,3 +1,15 @@
+<?php
+
+    session_start();
+
+    if(isset($_POST['logout'])) {
+        $_SESSION['id'] = "";
+        $_SESSION['email'] = "";
+        echo "<script> location.href='/'; </script>";
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -74,13 +86,13 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="articles">ARTICLES</a>
+              <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
               <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FORUM</a>
+            <a class="nav-link" href="forum">FORUM</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="forum">REPORT</a>
@@ -97,6 +109,9 @@
           </li>
         </ul>
       </div>
+        <form method="post">
+            <button id="submit" name="logout">LOGOUT</button>
+        </form>
     </nav><br><br>
     <div class="row" style="color: white;">
   <div class="col-7" style="padding-left: 80px;text-align: left;padding-right: 60px;">
