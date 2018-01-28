@@ -95,7 +95,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="adopt">ADOPT</a>
-              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="Donate">DONATE</a>
               <a class="dropdown-item" href="enlist">ENLIST</a>
             </div>
           </li>

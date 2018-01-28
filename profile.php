@@ -8,15 +8,12 @@
 
     $row = mysqli_fetch_array(mysqli_query($link, $query));
 
-<<<<<<< HEAD
-=======
     if(isset($_POST['logout'])) {
         $_SESSION['id'] = "";
         $_SESSION['email'] = "";
         echo "<script> location.href='/'; </script>";
     }
 
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
 ?>
 
 <!doctype html>
@@ -77,11 +74,7 @@
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-<<<<<<< HEAD
-      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
-=======
       <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -93,14 +86,6 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-              <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">UPLOAD</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">CHAT</a>
-=======
               <a class="dropdown-item" href="articles">ARTICLES</a>
               <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
               <a class="dropdown-item" href="upload">UPLOAD</a>
@@ -108,7 +93,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="forum">FORUM</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
           </li>
           <li class="nav-item">
             <a class="nav-link" href="complaints">REPORT</a>
@@ -125,12 +109,9 @@
           </li>
         </ul>
       </div>
-<<<<<<< HEAD
-=======
         <form method="post">
             <button id="submit" name="logout">LOGOUT</button>
         </form>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
     </nav>
     <div>
       <h1 style="text-align: center;color: white;">PROFILE</h1>

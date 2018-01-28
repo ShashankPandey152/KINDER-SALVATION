@@ -32,12 +32,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       
     <!--Google Fonts-->
-<<<<<<< HEAD
-    <l
-       ink href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
-=======
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       
       
     <style>

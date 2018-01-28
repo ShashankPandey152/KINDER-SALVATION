@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
 
     session_start();
@@ -16,7 +14,6 @@
 
 ?>
 
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
 <!doctype html>
 <html lang="en">
   <head>
@@ -53,8 +50,6 @@
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
-<<<<<<< HEAD
-=======
         #submit {
             background: none;
             border: 2px solid #5BE59E;
@@ -68,18 +63,13 @@
             background: #5BE59E;
             color: white;
         }
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
     </style>
 
     <title>ARTICLES</title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-<<<<<<< HEAD
-      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
-=======
       <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -91,17 +81,6 @@
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-              <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">UPLOAD</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">CHAT</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">REPORT</a>
-=======
               <a class="dropdown-item" href="articles">ARTICLES</a>
               <a class="dropdown-item" href="ourarticles">OUR ARTICLES</a>
               <a class="dropdown-item" href="upload">UPLOAD</a>
@@ -112,30 +91,19 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="complaints">REPORT</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-              <a class="dropdown-item" href="#">ADOPT</a>
-              <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ENLIST</a>
-=======
               <a class="dropdown-item" href="adopt">ADOPT</a>
-              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="Donate">DONATE</a>
               <a class="dropdown-item" href="enlist">ENLIST</a>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
             </div>
           </li>
         </ul>
       </div>
-<<<<<<< HEAD
-    </nav>
-      <h1 style="text-align:center;margin-top:20px;color: white;">ARTICLES</h1>
-=======
         <form method="post">
             <button id="submit" name="logout">LOGOUT</button>
         </form>
@@ -154,7 +122,6 @@
           
         ?>
       </div>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

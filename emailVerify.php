@@ -22,15 +22,12 @@ if(isset($_POST['signup'])) {
     }
 }
 
-<<<<<<< HEAD
-=======
 if(isset($_POST['logout'])) {
     $_SESSION['id'] = "";
     $_SESSION['email'] = "";
     echo "<script> location.href='/'; </script>";
 }
 
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
 ?>
 
 
@@ -89,19 +86,13 @@ if(isset($_POST['logout'])) {
         }
     </style>
 
-<<<<<<< HEAD
-    <title>STARTER TEMPLATE</title>
-=======
     <title>EMAIL VERIFY</title>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       </button>
-<<<<<<< HEAD
-=======
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
@@ -135,7 +126,6 @@ if(isset($_POST['logout'])) {
         <form method="post">
             <button id="submit" name="logout">LOGOUT</button>
         </form>
->>>>>>> 24c1f796080f25189e0b4367f8d56d64d223ddc5
     </nav><br>
     <div>
         <h1 style="text-align: center;color: white;">VERIFY E-MAIL</h1>
