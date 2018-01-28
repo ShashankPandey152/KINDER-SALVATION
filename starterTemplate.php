@@ -30,12 +30,16 @@
           background-color: #d1e0e0;
 
         }
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
+        }
 
     </style>
 
     <title>STARTER TEMPLATE</title>
   </head>
-  <body>
+  <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +70,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">ADOPT</a>
               <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ANALYZE</a>
+              <a class="dropdown-item" href="#">ENLIST</a>
             </div>
           </li>
         </ul>

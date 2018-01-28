@@ -4,7 +4,9 @@
 
     $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
 
-    $query = "SELECT * FROM `enlist` ORDER BY `id` DESC";
+    $query = "SELECT * FROM `users` WHERE `id` = '".mysqli_real_escape_string($link, $_SESSION['id'])."'";
+
+    $row = mysqli_fetch_array(mysqli_query($link, $query));
 
 ?>
 
@@ -21,6 +23,9 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
+    <!--Font Awesome-->
+    <link rel="stylesheet" type="text/css" href="css/fa/css/font-awesome.min.css">
+      
       
     <style>
     
@@ -35,18 +40,31 @@
         .nav-link {
             font-weight: bold;
         }
-      
         .navbar-custom {
           background-color: #d1e0e0;
 
+        }
+        #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
         }
         .bg{
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
+
     </style>
 
-    <title>ADOPT</title>
+    <title><?php echo $row['name']; ?></title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -58,7 +76,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -79,39 +97,26 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="adopt">ADOPT</a>
-              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="Donate">DONATE</a>
               <a class="dropdown-item" href="enlist">ENLIST</a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
-      <h1 style="text-align:center;margin-top:20px;color: white;">ADOPT CHILD</h1>
-      <div style="margin: 20px;">
-      
-          <?php
-          
-            if($result = mysqli_query($link, $query)) {
-                echo "<div class='row'>";
-                while($row = mysqli_fetch_array($result)) {
-                      echo '<div class="card" style="width: 18rem; margin: 20px;">';
-                      echo '<img class="card-img-top" src="images/enlist/'.$row['picture'].'" alt="'.$row['picture'].'">';
-                      echo '<div class="card-body">';
-                      echo '<h5 class="card-title">Name: '.$row['name'].'</h5>';
-                      echo '<p>Age: '.$row['age'].'</p>';
-                      echo '<p>Address: '.$row['address'].'</p>';
-                      echo '<p>Gender: '.$row['sex'].'</p>';
-                      $cid = $row['id'];
-                      echo '<a href="adoptdetails?id='.$cid.'" class="btn btn-primary">ADOPT THIS CHILD</a>';
-                      echo '</div>';
-                      echo '</div>';
-                }
-                echo "</div>";
-            }
-          
-          ?>
-      
-      </div>
+    <div>
+      <h1 style="text-align: center;color: white;">PROFILE</h1>
+        <div style="text-align: right; margin-right: 10px;">
+        <button id="submit" onclick="location.href='editprofile';"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;EDIT</button>
+        </div>
+    <div style="margin-left: 40px;font-size: 18px;color: white;">
+      <strong>Username:</strong> <?php echo $row['name']; ?><br><br>
+      <strong>E-Mail:</strong> <?php echo $row['email']; ?><br><br>
+      <strong>Address:</strong> <?php echo $row['address']; ?><br><br>
+      <strong>Contact:</strong> <?php echo $row['mobile']; ?><br><br>
+      <strong>Account Type:</strong> <?php if($row['type'] == 1) { echo "Normal User"; } else { echo "Counselor"; } ?><br><br>
+      <?php if($row['type'] == 2) { echo "<strong>Expertise:</strong> ".$row['expertise']; } ?>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

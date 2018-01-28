@@ -1,13 +1,3 @@
-<?php
-
-    session_start();
-
-    $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
-
-    $query = "SELECT * FROM `enlist` ORDER BY `id` DESC";
-
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -44,13 +34,15 @@
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
+       
+
     </style>
 
-    <title>ADOPT</title>
+    <title>STARTER TEMPLATE</title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -63,54 +55,33 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">OUR ARTICLES</a>
-              <a class="dropdown-item" href="upload">UPLOAD</a>
+              <a class="dropdown-item" href="#">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FORUM</a>
+            <a class="nav-link" href="#">CHAT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="complaints">REPORT</a>
+            <a class="nav-link" href="#">REPORT</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="adopt">ADOPT</a>
-              <a class="dropdown-item" href="donate">DONATE</a>
-              <a class="dropdown-item" href="enlist">ENLIST</a>
+              <a class="dropdown-item" href="#">ADOPT</a>
+              <a class="dropdown-item" href="#">DONATE</a>
+              <a class="dropdown-item" href="#">ENLIST</a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
-      <h1 style="text-align:center;margin-top:20px;color: white;">ADOPT CHILD</h1>
-      <div style="margin: 20px;">
-      
-          <?php
-          
-            if($result = mysqli_query($link, $query)) {
-                echo "<div class='row'>";
-                while($row = mysqli_fetch_array($result)) {
-                      echo '<div class="card" style="width: 18rem; margin: 20px;">';
-                      echo '<img class="card-img-top" src="images/enlist/'.$row['picture'].'" alt="'.$row['picture'].'">';
-                      echo '<div class="card-body">';
-                      echo '<h5 class="card-title">Name: '.$row['name'].'</h5>';
-                      echo '<p>Age: '.$row['age'].'</p>';
-                      echo '<p>Address: '.$row['address'].'</p>';
-                      echo '<p>Gender: '.$row['sex'].'</p>';
-                      $cid = $row['id'];
-                      echo '<a href="adoptdetails?id='.$cid.'" class="btn btn-primary">ADOPT THIS CHILD</a>';
-                      echo '</div>';
-                      echo '</div>';
-                }
-                echo "</div>";
-            }
-          
-          ?>
-      
+        <div style="text-align:center;margin-top:50px;color:white;">
+      <a href="1-prevent">SEXUAL ABUSE</a><br><br>
+      <a href="cyber">CYBER BULLYING</a><br><br>
+      <a href="online abuse">ONLINE ABUSE</a><br><br>
+      <a href="Domestic Abuse">DOMESTIC ABUSE</a><br><br>
       </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

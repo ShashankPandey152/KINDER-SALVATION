@@ -32,8 +32,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       
     <!--Google Fonts-->
-    <l
-       ink href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
       
       
     <style>
@@ -72,19 +71,22 @@
             background: #5BE59E;
             color: white;
         }
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
+        }
     </style>
 
     <title>forgetpassword</title>
   </head>
-  <body>
+  <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
       </button>
     </nav><br>
     <div>
-      <h1 style="text-align: center;">FORGOT PASSWORD</h1>
+      <h1 style="text-align: center;color: white;">FORGOT PASSWORD</h1>
     </div>  
       <form method="post">
     <div style="text-align: center;padding-top: 8%;">

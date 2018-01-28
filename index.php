@@ -21,6 +21,13 @@
                         echo "<script> alert('Logged in successfully. Welcome back $name'); </script>";
                         $_SESSION['id'] = $row['id'];
                         $_SESSION['email'] = $row['email'];
+                        if($row['status'] == 0) {
+                            echo '<script> location.href="emailVerify"; </script>';
+                        } 
+                        if($row['type'] == 2 && $row['expertise'] == "") {
+                            echo '<script> location.href="counselorExpertise"; </script>';
+                        }
+                        echo "<script> location.href='profile'; </script>";
                     } else {
                         echo "<script> alert('Incorrect credentials!'); </script>";
                     }

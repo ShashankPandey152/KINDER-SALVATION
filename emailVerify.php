@@ -1,25 +1,26 @@
 <?php
 
  session_start();
-
-$_SESSION['email'] = "sdharchou@gmail.com";
     
  $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
 
- $to = $_SESSION['email'];
-                    $subject = "Email Verification";
-                    $message = '
-Thanks for signing up!
+if(isset($_POST['signup'])) {
+    
+    $to = $_SESSION['email'];
+    $subject = "Email Verification";
+    $message = '
+    Thanks for signing up!
 
-Please click this link to activate your account:
-http://jncpasighat-com.stackstaging.com/vastuKosh/verify.php?email='.$_SESSION['email'].'
+    Please click this link to activate your account:
+    http://kindersalvation-com.stackstaging.com/verify.php?email='.$_SESSION['email'].'
 
-This is a system generated mail. Do not reply. 
-                    ';
-                    $headers = 'From:no-reply@kindersalvation.com' . "\r\n"; 
-                    if(mail($to, $subject, $message, $headers)) {
-                        echo "<script> alert('Verification mail sent! Please verify your email address.'); </script>";
-                    }
+    This is a system generated mail. Do not reply. 
+    ';
+    $headers = 'From:no-reply@kindersalvation.com' . "\r\n"; 
+    if(mail($to, $subject, $message, $headers)) {
+        echo "<script> alert('Verification mail sent! Please verify your email address.'); </script>";
+    }
+}
 
 ?>
 
@@ -73,26 +74,29 @@ This is a system generated mail. Do not reply.
             background: #5BE59E;
             color: white;
         }
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
+        }
     </style>
 
     <title>STARTER TEMPLATE</title>
   </head>
-  <body>
+  <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
       </button>
     </nav><br>
     <div>
-        <h1 style="text-align: center;">VERIFY E-MAIL</h1>
+        <h1 style="text-align: center;color: white;">VERIFY E-MAIL</h1>
     </div>
-    <div style="text-align: center;">
+    <div style="text-align: center;color: white;">
             <br><br>
             <span id="text">Please verify e-mail address!<br><br>If you accidently deleted the mail, Click on Resend.</span>
             <br><br><br>
             <form method="post">
-               <p><input type="submit"  value="RESEND" id="submit" name="signup"></p>
+               <p><input type="submit" value="RESEND" id="submit" name="signup"></p>
             </form>
     </div>
 

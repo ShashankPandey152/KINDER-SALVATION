@@ -98,14 +98,17 @@
             background: #5BE59E;
             color: white;
         }
-
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
+        }
     </style>
 
     <title>ENLIST</title>
   </head>
-  <body>
+  <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -118,23 +121,24 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">UPLOAD</a>
+              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CHAT</a>
+            <a class="nav-link" href="#">FORUM</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">REPORT</a>
+            <a class="nav-link" href="complaints">REPORT</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ADOPT</a>
-              <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ANALYZE</a>
+              <a class="dropdown-item" href="adopt">ADOPT</a>
+              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="enlist">ENLIST</a>
             </div>
           </li>
         </ul>
@@ -142,10 +146,10 @@
     </nav><br>
     
     <div>
-      <h1 style="text-align: center;">ENLIST CHILDREN</h1>
+      <h1 style="text-align: center;color: white;">ENLIST CHILDREN</h1>
     </div>
     <form method="post" enctype="multipart/form-data">
-        <div style="padding-top: 5%;padding-left: 10%;">
+        <div style="padding-top: 5%;padding-left: 10%;color: white;">
           <label>Upload Picture </label><br>
           <input type="file" name="image"><br><br>
           <input type="text" placeholder="Name" style="width: 250px;" class="inputBox" name="name"><br><br>

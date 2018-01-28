@@ -1,3 +1,23 @@
+<?php
+
+    session_start();
+
+    $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
+
+    $query = "SELECT * FROM `enlist` WHERE `id` = '".mysqli_real_escape_string($link, $_GET['id'])."'";
+
+    $row = mysqli_fetch_array(mysqli_query($link, $query));
+
+    if(isset($_POST['submit'])) {
+        if($_POST['name'] != "" && $_POST['age'] != "" && $_POST['address'] != "" && $_POST['occupation'] != "" && $_POST['income'] != "1" && $_POST['reason'] != "") {
+            
+        } else {
+            echo "<script> alert('Complete the form!'); </script>";
+        }
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,19 +45,40 @@
         .nav-link {
             font-weight: bold;
         }
-      
         .navbar-custom {
           background-color: #d1e0e0;
 
         }
-
+        .inputBox {
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        #submit {
+            background: none;
+            border: 2px solid #5BE59E;
+            padding: 5px 10px;
+            color: #5BE59E;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        #submit:hover {
+            background: #5BE59E;
+            color: white;
+        }
+        .bg{
+        	background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+        	background-size: cover;
+        }
+        
     </style>
 
     <title>STARTER TEMPLATE</title>
   </head>
-  <body>
+  <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,23 +91,24 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">UPLOAD</a>
+              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CHAT</a>
+            <a class="nav-link" href="#">FORUM</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">REPORT</a>
+            <a class="nav-link" href="complaints">REPORT</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ADOPT</a>
-              <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ANALYZE</a>
+              <a class="dropdown-item" href="adopt">ADOPT</a>
+              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="enlist">ENLIST</a>
             </div>
           </li>
         </ul>
@@ -74,29 +116,31 @@
     </nav>
 
     <div>
-      <h1 style="text-align: center;">DETAILS</h1>
+      <h1 style="text-align: center;color: white;">DETAILS</h1>
     </div>
-    <br><br><br>
-      <div style="padding-left: 10%">
-        <input type="text" placeholder="Name" style="width: 350px;"><br><br>
-        <input type="text" placeholder="Age" style="width: 350px;"><br><br>
-        <input type="text" placeholder="Address" style="width: 350px;"><br><br>
-        <input type="text" placeholder="Occupation" style="width: 350px;"><br><br>
-        <select name="Income">
-          <option value="1">Annual Income</option>
-          <option value="2">Less than INR 1,00,000</option>
-          <option value="3">INR 1,00,000 - INR 3,00,000</option>
-          <option value="4">INR 3,00,000 - INR 5,00,000</option>
-          <option value="5">INR 5,00,000 - INR 8,00,000</option>
-          <option value="6">Above INR 8,00,000</option>
-  </select>
-        <br><br>
-        <textarea placeholder="Reason For Adopting" style="width: 350px;height: 150px;"></textarea>
-      </div>
-      <br><br>
-    <div style="text-align: center;">
-        <button>Submit</button>
-    </div>
+    <br>
+      <form method="post">
+          <div style="padding-left: 10%">
+            <input type="text" placeholder="Name" style="width: 350px;" name="name" class="inputBox"><br><br>
+            <input type="text" placeholder="Age" style="width: 350px;" name="age" class="inputBox"><br><br>
+            <input type="text" placeholder="Address" style="width: 350px;" name="address" class="inputBox"><br><br>
+            <input type="text" placeholder="Occupation" style="width: 350px;" name="occupation" class="inputBox"><br><br>
+            <select name="Income" class="inputBox" name="income">
+              <option value="1">--Annual Income--</option>
+              <option value="Less than INR 1,00,000">Less than INR 1,00,000</option>
+              <option value="INR 1,00,000 - INR 3,00,000">INR 1,00,000 - INR 3,00,000</option>
+              <option value="INR 3,00,000 - INR 5,00,000">INR 3,00,000 - INR 5,00,000</option>
+              <option value="INR 5,00,000 - INR 8,00,000">INR 5,00,000 - INR 8,00,000</option>
+              <option value="Above INR 8,00,000">Above INR 8,00,000</option>
+            </select>
+            <br><br>
+            <textarea placeholder="Reason For Adopting" name="reason" style="width: 350px;height: 150px;" class="inputBox"></textarea>
+          </div>
+          <br>
+        <div style="text-align: center;">
+            <button id="submit" name="submit">Submit</button>
+        </div>
+    </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

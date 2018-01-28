@@ -30,14 +30,17 @@
           background-color: #d1e0e0;
 
         }
-
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
+        }
     </style>
 
     <title>Prevent Abuses</title>
   </head>
-  <body>
+  <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,35 +48,37 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               THE ISSUE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">UPLOAD</a>
+              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CHAT</a>
+            <a class="nav-link" href="#">FORUM</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">REPORT</a>
+            <a class="nav-link" href="complaints">REPORT</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ADOPT</a>
-              <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ANALYZE</a>
+              <a class="dropdown-item" href="adopt">ADOPT</a>
+              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="enlist">ENLIST</a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
-      <div>
-      <h2> Sexual abuse </h2>
+      <div style=" text-align:center;background: white; opacity: 0.8;margin:50px 200px 50px 200px; auto; border-radius: 20px;">
+      <h1 style="color:red;"> Sexual abuse </h1>
+          <div style="margin:50px 200px 50px 200px;text-align:justify;">
         <h4> What is sexual abuse </h4>
         <p> A child is sexually abused when they are forced or persuaded to take part in sexual activities.</p>
         <p> This doesn't have to be physical contact and it can happen online. Sometimes the child won't understand that what's happening to them is abuse.</p>
@@ -96,7 +101,7 @@
         <li>allowing someone else to make, view or distribute child abuse images</li>
         <li>showing pornography to a child</li>
         <li>sexually exploiting a child for money, power or status (child exploitation).</li>
-        
+        </div>
       </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

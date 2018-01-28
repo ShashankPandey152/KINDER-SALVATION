@@ -30,14 +30,17 @@
           background-color: #d1e0e0;
 
         }
-
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
+        }
     </style>
 
     <title>Cyber Bullying</title>
   </head>
-  <body>
+  <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,31 +53,33 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">UPLOAD</a>
+              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CHAT</a>
+            <a class="nav-link" href="#">FORUM</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">REPORT</a>
+            <a class="nav-link" href="complaints">REPORT</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ADOPT</a>
-              <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ANALYZE</a>
+              <a class="dropdown-item" href="adopt">ADOPT</a>
+              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="analyze">ANALYZE</a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
-      <div>
-      <h2>Bullying and cyberbullying</h2>
-        <h4> Bullying and cyberbullying </h4>
+      <div style=" text-align:center;background: white; opacity: 0.8;margin:50px 200px 50px 200px; auto; border-radius: 20px;">
+      <h1 style="color:red;">Bullying and Cyberbullying</h1>
+          <div style="margin:50px 200px 50px 200px;text-align:justify;">
+        <h4> Bullying and Cyberbullying </h4>
       <p>Bullying is behaviour that hurts someone else – such as name calling, hitting, pushing, spreading rumours, threatening or undermining someone.</p>
       <p>It can happen anywhere – at school, at home or online. It’s usually repeated over a long period of time and can hurt a child both physically and emotionally.</p>
       <p>Bullying that happens online, using social networks, games and mobile phones, is often called cyberbullying. A child can feel like there’s no escape because it can happen wherever they are, at any time of day or night.</p>
@@ -106,7 +111,7 @@
       <li>creating fake accounts, hijacking or stealing online identities to embarrass a young person or cause trouble using their name</li>
       <li>sending explicit messages, also known as sexting</li>
       <li>pressuring children into sending sexual images or engaging in sexual conversations.</li>
-
+      </div>
 
 
       </div>

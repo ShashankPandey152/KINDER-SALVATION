@@ -3,10 +3,31 @@
     session_start();
 
     $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
-
-    $query = "SELECT * FROM `enlist` ORDER BY `id` DESC";
+    
+    if(isset($_POST['logout'])) {
+        $_SESSION['id'] = "";
+        $_SESSION['name'] = "";
+        echo "<script> location.href='/'; </script>";
+    }
+  
+    if(isset($_POST['submit'])) {
+        if($_POST['title'] == "" || $_POST['question'] == "" || $_POST['awesome'] == "")
+        {
+            echo "<script> alert('Complete the form!'); </script>";
+        } else {
+            $query = "INSERT INTO `add` (`title`, `question`, `details`, `uid`) VALUES('".mysqli_real_escape_string($link, $_POST['title'])."', '".mysqli_real_escape_string($link, $_POST['question'])."', '".mysqli_real_escape_string($link, $_POST['awesome'])."', '".mysqli_real_escape_string($link, $_SESSION['id'])."')";
+            if(mysqli_query($link,$query)){
+                echo "<script> alert('Question added successfully!'); </script>";
+            }else {
+                echo mysqli_error($link);
+                echo "<script> alert('Oops! There was an error, please come back later.'); </script>";
+            }
+        }
+    }
 
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -44,9 +65,35 @@
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
+         .inputSettings {
+                 margin-left: 100px;
+                margin-top:50px;
+                border: 2px solid #19D1FF;
+                border-radius: 10px;
+                padding: 5px 10px;
+                
+            }
+          
+            #askQuestion {
+                margin-left: 100px;
+                margin-top:50px;
+               float:left;
+                padding: 5px 10px;
+                background: white;
+                color: #5BE59E;
+                border: 2px solid #19D1FF;
+                border-radius: 10px;
+                font-weight: bold;
+            }
+            #askQuestion:hover {
+                background: #19D1FF;
+                color: white;
+            }
+
+
     </style>
 
-    <title>ADOPT</title>
+    <title>ADD QUESTION</title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -86,32 +133,25 @@
         </ul>
       </div>
     </nav>
-      <h1 style="text-align:center;margin-top:20px;color: white;">ADOPT CHILD</h1>
-      <div style="margin: 20px;">
       
-          <?php
-          
-            if($result = mysqli_query($link, $query)) {
-                echo "<div class='row'>";
-                while($row = mysqli_fetch_array($result)) {
-                      echo '<div class="card" style="width: 18rem; margin: 20px;">';
-                      echo '<img class="card-img-top" src="images/enlist/'.$row['picture'].'" alt="'.$row['picture'].'">';
-                      echo '<div class="card-body">';
-                      echo '<h5 class="card-title">Name: '.$row['name'].'</h5>';
-                      echo '<p>Age: '.$row['age'].'</p>';
-                      echo '<p>Address: '.$row['address'].'</p>';
-                      echo '<p>Gender: '.$row['sex'].'</p>';
-                      $cid = $row['id'];
-                      echo '<a href="adoptdetails?id='.$cid.'" class="btn btn-primary">ADOPT THIS CHILD</a>';
-                      echo '</div>';
-                      echo '</div>';
-                }
-                echo "</div>";
-            }
-          
-          ?>
       
-      </div>
+      <form method="POST">
+       <div>
+              <p><input type="text" name="title" class="inputSettings" placeholder="Title"> 
+          </div>
+
+      
+         <div >
+              <p><input type="text" name="question" class="inputSettings" placeholder="Question"> 
+          </div>
+         <div style="margin:20px 0px 0px 100px;">
+             <textarea rows="5" cols="25" style="border:2px solid #19D1FF; border-radius: 10px; padding: 5px 10px;" name="awesome" placeholder="Put details here!"></textarea>
+          </div>
+          <div style=" text-align: center;">
+           <input name="submit" type="submit" id="askQuestion"  value="Submit">
+           </div>
+         </form>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -1,3 +1,19 @@
+<?php
+    
+    session_start();
+
+    $id = $_GET['id'];
+
+    $_SESSION['id'] = 9;
+
+    $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
+
+    $query = "SELECT * FROM `users` WHERE `id` = '".mysqli_real_escape_string($link, $_GET['id'])."'";
+
+    $row = mysqli_fetch_array(mysqli_query($link, $query));
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -121,20 +137,43 @@
 	<div class="row container search">
     <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" >
      <button type="submit" class="btn btn-primary btn-sm">Search</button>
+     <br><br>
+     <p style="margin-left: 20px; margin-top: 40px;"><?php echo $row['name']; ?></p>
     </div>
     <div id="message">
         <div id="name">
-          <p style="width: 80%; margin-left: 20%; background: #E0E0E0; height: 50px; padding: 10px 20px;">Name</p>  
+          <p style="width: 80%; margin-left: 20%; background: #E0E0E0; height: 50px; padding: 10px 20px;"><strong><?php echo $row['name']; ?></strong></p>  
+        </div>
+        <div id="messages" style="margin-left: 25%;">
         </div>
        <div style="position:absolute; bottom:1%;">
-        <input type="text" placeholder='Type message here!' style="font-family: FontAwesome;width: 400%; padding: 5px 10px; margin-left: 135%;">
-        <button type="submit" class="btn btn-primary btn-sm" style="margin-right: -430%">Send</button>
+        <input type="text" id="msg" placeholder='Type message here!' style="font-family: FontAwesome;width: 400%; padding: 5px 10px; margin-left: 135%;">
+        <button type="button" id="send" class="btn btn-primary btn-sm" style="margin-right: -430%" value="<?php echo $_SESSION['id'].'+'.$_GET['id']; ?>">Send</button>
         </div> 
     </div>
       
     <script type="text/javascript">
-    
-        $("#message").hide();
+        
+        function showChat() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status) {
+                    $("#messages").html(this.responseText);
+                }
+            }
+            xmlhttp.open("GET","getChat?p=" + )
+        }
+        
+        $("#send").click(function() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    $("#messages").html(this.responseText);
+                }
+            }
+            xmlhttp.open("GET","putChat?p=" + $("#send").val() + "&m=" + $("#msg").val(),true);
+            xmlhttp.send();
+        });
         
     </script>
            

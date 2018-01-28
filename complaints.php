@@ -100,14 +100,17 @@
             background: #5BE59E;
             color: white;
         }
-
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
+        }
     </style>
 
     <title>COMPLAINTS</title>
   </head>
-  <body>
+  <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -120,23 +123,24 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">UPLOAD</a>
+              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CHAT</a>
+            <a class="nav-link" href="#">FORUM</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">REPORT</a>
+            <a class="nav-link" href="report">REPORT</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ADOPT</a>
-              <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ANALYZE</a>
+              <a class="dropdown-item" href="adopt">ADOPT</a>
+              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="enlist">ENLIST</a>
             </div>
           </li>
         </ul>
@@ -145,15 +149,15 @@
     
 
     <div>
-      <h1 style="text-align: center;">COMPLAINTS</h1>
+      <h1 style="text-align: center;color: white;">COMPLAINTS</h1>
     </div>
     <form method="post" enctype="multipart/form-data">
-        <div style="padding-left: 10%">
+        <div style="padding-left: 10%;color: white;">
           <input type="text" placeholder="Name" class="inputBox" name="name" style="width: 350px;"><br><br>
-          <label for="date">Date:&nbsp;&nbsp;</label><input type="date" name="date" id="date" class="inputBox" placeholder="Date" class="datepicker"><br><br>
-          <label for="time">Time:&nbsp;&nbsp;</label><input type="time" name="time" id="time" class="inputBox" placeholder="Date" class="datepicker"><br><br>
+          <label for="date"><strong>Date:</strong>&nbsp;&nbsp;</label><input type="date" name="date" id="date" class="inputBox" placeholder="Date" class="datepicker"><br><br>
+          <label for="time"><strong>Time:</strong>&nbsp;&nbsp;</label><input type="time" name="time" id="time" class="inputBox" placeholder="Date" class="datepicker"><br><br>
           <textarea placeholder="Details" style="width: 350px;height: 150px;" name="details" class="inputBox"></textarea><br><br>
-          <label for="file">Upload image/video:&nbsp;&nbsp;</label><input type="file" name="file" id="file"><br><br>
+          <label for="file"><strong>Upload image/video:</strong>&nbsp;&nbsp;</label><input type="file" name="file" id="file"><br><br>
         </div>
         <div style="text-align: center;">  
           <input type="submit" value="Submit" name="submit" id="submit">

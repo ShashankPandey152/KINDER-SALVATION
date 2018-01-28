@@ -10,9 +10,7 @@
       
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Martel" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Merienda:700" rel="stylesheet">
-
-      
+    <link href="https://fonts.googleapis.com/css?family=Merienda:700" rel="stylesheet">      
       
     <style>
     
@@ -50,13 +48,21 @@
             background: #5BE59E;
             color: white;
         }
+        #submit:focus {
+            background: #5BE59E;
+            color: white;
+        }
+        .bg{
+          background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
+          background-size: cover;
+        }
     </style>
 
     <title>STARTER TEMPLATE</title>
   </head>
-  <body>
+  <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-      <a class="navbar-brand" href="#" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
+      <a class="navbar-brand" href="profile" style="color: #5BE59E;">बालुत प्रिद्र्णं</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -69,29 +75,30 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">ARTICLES</a>
-              <a class="dropdown-item" href="#">UPLOAD</a>
+              <a class="dropdown-item" href="#">OUR ARTICLES</a>
+              <a class="dropdown-item" href="upload">UPLOAD</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">CHAT</a>
+            <a class="nav-link" href="#">FORUM</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">REPORT</a>
+            <a class="nav-link" href="forum">REPORT</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               GET INVOLVED
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">ADOPT</a>
-              <a class="dropdown-item" href="#">DONATE</a>
-              <a class="dropdown-item" href="#">ANALYZE</a>
+              <a class="dropdown-item" href="adopt">ADOPT</a>
+              <a class="dropdown-item" href="donate">DONATE</a>
+              <a class="dropdown-item" href="enlist">ENLIST</a>
             </div>
           </li>
         </ul>
       </div>
     </nav><br><br>
-    <div class="row">
+    <div class="row" style="color: white;">
   <div class="col-7" style="padding-left: 80px;text-align: left;padding-right: 60px;">
       <div>
         <h1 style="text-align: center;font-family: 'Merienda', cursive;background-color: #66c2ff; color: white; padding: 15px;">It All Begins With You...</h1>
@@ -100,11 +107,11 @@
         <p>Your support helps create a world free of child sexual abuse. Children deserve to grow up happy and healthy with their sexual boundaries intact, and your gift can help make that happen. It starts with YOU.</p>   
       </div>
       <div>
-        <button id="submit" style="width: 105px;text-align: center;">50</button>
-        <button id="submit" style="width: 105px;text-align: center;">100</button>
-        <button id="submit" style="width: 105px;text-align: center;">200</button>
-        <button id="submit" style="width: 105px;text-align: center;">500</button>
-        <button id="submit" style="width: 105px;text-align: center;">1000</button><br><br>
+        <button id="submit" value="50" style="width: 105px;text-align: center;">50</button>
+        <button id="submit" value="100" style="width: 105px;text-align: center;">100</button>
+        <button id="submit" value="200" style="width: 105px;text-align: center;">200</button>
+        <button id="submit" value="500" style="width: 105px;text-align: center;">500</button>
+        <button id="submit" value="1000" style="width: 105px;text-align: center;">1000</button><br><br>
         <button id="submit" style="width: 200px;text-align: center;">Enter Amount</button>&nbsp;&nbsp;&nbsp;
         <input type="text" placeholder="   Enter other Amount" class="inputBox" style="width: 300px;"><br><br><br>
         <input type="checkbox">   Yes, Automatically repeat this gift every year.<br><br>
@@ -155,7 +162,7 @@
           <option value="Mrs">Mrs.</option>
           <option value="Miss">Miss.</option>
           <option value="Dr">Dr.</option>
-        </select class="inputBox"><br><br>
+        </select><br><br>
         <input type="text" class="inputBox" placeholder="First Name" style="width: 350px;"><br><br>
         <input type="text" class="inputBox" placeholder="Last Name" style="width: 350px;"><br><br>
         <input type="text" class="inputBox" placeholder="Address 1" style="width: 250px;"><br><br>

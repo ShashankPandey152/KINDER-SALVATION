@@ -1,13 +1,3 @@
-<?php
-
-    session_start();
-
-    $link = mysqli_connect("shareddb-g.hosting.stackcp.net","kindersalvation-32379e2b", "password98@", "kindersalvation-32379e2b");
-
-    $query = "SELECT * FROM `enlist` ORDER BY `id` DESC";
-
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -44,9 +34,36 @@
           background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(images/zeIVk.png);
           background-size: cover;
         }
+          #question {
+                margin-left: 100px;
+            }
+            
+            .inputSettings {
+                border: 2px solid #19D1FF;
+                border-radius: 10px;
+                padding: 5px 10px;
+                margin-bottom: 10px;
+            }
+            
+            .askQuestion {
+                padding: 5px 10px;
+                background: white;
+                color: #5BE59E;
+                border: 2px solid #19D1FF;
+                border-radius: 10px;
+                font-weight: bold;
+            }
+            
+            .askQuestion:hover {
+                background: #19D1FF;
+                color: white;
+            }
+            
+
+
     </style>
 
-    <title>ADOPT</title>
+    <title>STARTER TEMPLATE</title>
   </head>
   <body class="bg">
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
@@ -86,32 +103,20 @@
         </ul>
       </div>
     </nav>
-      <h1 style="text-align:center;margin-top:20px;color: white;">ADOPT CHILD</h1>
-      <div style="margin: 20px;">
-      
-          <?php
-          
-            if($result = mysqli_query($link, $query)) {
-                echo "<div class='row'>";
-                while($row = mysqli_fetch_array($result)) {
-                      echo '<div class="card" style="width: 18rem; margin: 20px;">';
-                      echo '<img class="card-img-top" src="images/enlist/'.$row['picture'].'" alt="'.$row['picture'].'">';
-                      echo '<div class="card-body">';
-                      echo '<h5 class="card-title">Name: '.$row['name'].'</h5>';
-                      echo '<p>Age: '.$row['age'].'</p>';
-                      echo '<p>Address: '.$row['address'].'</p>';
-                      echo '<p>Gender: '.$row['sex'].'</p>';
-                      $cid = $row['id'];
-                      echo '<a href="adoptdetails?id='.$cid.'" class="btn btn-primary">ADOPT THIS CHILD</a>';
-                      echo '</div>';
-                      echo '</div>';
-                }
-                echo "</div>";
-            }
-          
-          ?>
-      
-      </div>
+      <form method="post">
+          <h2 style="text-align: center;">FORUM</h2>
+          <div style="float: left; text-align: center;" id="question">
+
+              <input type="text" class="inputSettings" placeholder="Question" name="question" id="search">&nbsp;&nbsp;&nbsp;
+              <input name="submit" type="submit" class="askQuestion" value="Ask a new question">
+              <br><br>
+              
+              <div id="results" style="margin-left: -50px;">
+                
+              </div>
+          </div>
+          </form>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
